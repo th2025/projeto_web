@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PetSaúde | Login</title>
+    <link rel="stylesheet" href="{% static 'projeto/css/logar.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            <label for="id_email">E-mail:</label><br>
+            {{ form.email }}<br>
+
+            <label for="id_senha">Senha:</label><br>
+            {{ form.senha }}<br>
+
+            <button type="submit">Entrar</button>
+        </form>
+
+        {% if erro %}
+            <p class="error">{{ erro }}</p>
+        {% endif %}
+    </div>
+
+    <div class="register-link">
+        <p>Não tem uma conta? <a href="/registrar">Registrar-se</a></p>
+    </div>
+</body>
+</html>

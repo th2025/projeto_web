@@ -1,0 +1,93 @@
+/* Fundo e fonte padrão */
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://example.com/cachorrinhos.jpg'); /* Substitua pela URL real */
+    background-size: auto;
+    background-repeat: repeat;
+    background-position: top left;
+}
+
+/* Container central do formulário */
+.container {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Título */
+.container h2 {
+    color: #e74c3c;
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Campos do formulário */
+.container input {
+    width: 90%;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 1.1rem;
+    font-weight: normal;
+    background-color: #eaf2ff;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: border 0.3s ease;
+}
+
+.container input:focus {
+    border-color: #e74c3c;
+    outline: none;
+}
+
+/* Botão */
+.container button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.container button:hover {
+    background-color: #fb8c00;
+}
+
+/* Mensagem de erro */
+.error {
+    color: red;
+    margin-top: 10px;
+}
+
+/* Link de registro */
+.register-link {
+    margin-top: 20px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.register-link a {
+    color: #e74c3c;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.register-link a:hover {
+    color: #f39c12;
+}

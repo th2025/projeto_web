@@ -1,0 +1,17 @@
+<!-- app_cadastro/templates/app_cadastro/cadastro.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Cliente</title>
+</head>
+<body>
+    <h1>Cadastro de Cliente</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Cadastrar</button>
+    </form>
+</body>
+</html>

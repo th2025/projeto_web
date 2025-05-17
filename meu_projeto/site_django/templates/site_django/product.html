@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetSaúde | Produtos </title>
+
+    <!-- Link para o arquivo CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'projeto/css/style.css' %}">
+</head>
+<body>
+
+    <!-- Navegação -->
+    <nav>
+        <ul>
+            <li><a href="../">Página Inicial</a></li>
+        </ul>
+    </nav>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="center">
+            <img src="{% static 'projeto/imagens/petsaude.png' %}" alt="PetSaúde">
+        </div>
+        <h1>Produtos</h1>
+        <h2>Encontre os melhores produtos para seu pet</h2>
+    </header>
+
+    <!-- Pesquisa de produtos -->
+    <section class="search-section">
+        <h3>Pesquisar Produtos</h3>
+        <div class="search-container" onkeydown="handleKeyDown(event)">
+            <input type="text" id="productSearch" placeholder="Digite o nome do produto" oninput="searchProduct()">
+        </div>
+    </section>    
+
+    <!-- Produtos de referência -->
+    <section>
+        <h3>Produtos</h3>
+        {% if produtos %}
+            <div class="produtos-container">
+                {% for produto in produtos %}
+                <div class="produto-card">
+                    <div class="produto-img">
+                        {% if produto.imagem %}
+                            <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}">
+                        {% else %}
+                            <img src="{% static 'projeto/imagens/placeholder.png' %}" alt="Imagem não disponível">
+                        {% endif %}
+                    </div>
+                    <h4>{{ produto.nome }}</h4>
+                    <p>R$ {{ produto.preco|floatformat:2 }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Nenhum produto cadastrado no momento.</p>
+        {% endif %}
+    </section>
+
+    <script>
+        function searchProduct() {
+            const searchQuery = document.getElementById('productSearch').value.toLowerCase();
+            const produtos = document.querySelectorAll('.produto-card');
+        
+            produtos.forEach(produto => {
+                const nomeProduto = produto.querySelector('h4').textContent.toLowerCase();
+                produto.style.display = nomeProduto.includes(searchQuery) ? 'block' : 'none';
+            });
+        }
+        
+        function handleKeyDown(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();  // evita recarregar a página
+                searchProduct();
+            }
+        }
+        </script>               
+</body>
+</html>

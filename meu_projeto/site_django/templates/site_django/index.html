@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetSaúde | Homepage</title>
+
+    <!-- Link para o arquivo CSS -->
+    <link rel="stylesheet" href="{% static 'projeto/css/style.css' %}">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="produtos/">Produtos</a>
+            </li>
+        </ul>
+    </nav>
+    
+    <header>
+        <div class="center">
+            <img src="{% static 'projeto/imagens/petsaude.png' %}" alt="PetSaúde">
+        </div>
+        <h1>Sobre a Empresa</h1>
+        <h2>Empresa Veterinária</h2>
+
+        <main>
+            <section>
+                <h3>Missão</h3>
+                <p>
+                    Nossa missão é proporcionar cuidados veterinários de excelência, promovendo a saúde e bem-estar dos animais com amor,
+                    dedicação e responsabilidade. Buscamos ser parceiros confiáveis para os tutores, oferecendo soluções inovadoras, atendimento humanizado e serviços de qualidade,
+                    para garantir que cada animal tenha uma vida saudável e feliz.
+                </p>
+            </section>
+            <section>
+                <h3>Visão</h3>
+                <p>
+                    Ser reconhecida como a principal referência em cuidados veterinários, oferecendo serviços inovadores e de alta qualidade.
+                    Nossa visão é construir um futuro onde todos os animais tenham acesso a cuidados de saúde de excelência, com um atendimento que priorize o bem-estar, 
+                    a confiança e a satisfação dos tutores, sempre em busca de melhorias constantes.
+                </p>
+            </section>
+            <section>
+                <h3>Valores</h3>
+                <p>
+                    Compromisso com o Bem-Estar, priorizamos o cuidado e a saúde dos animais em todos os aspectos de nosso trabalho, garantindo que recebam o melhor atendimento possível.
+                </p>
+            </section>     
+        </main>
+    </header>
+</body>
+</html>

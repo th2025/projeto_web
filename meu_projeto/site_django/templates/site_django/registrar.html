@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PetSaúde | Registrar-se</title>
+    <link rel="stylesheet" href="{% static 'projeto/css/registrar.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Registrar Usuário</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <label>Nome:</label><br>
+            <input type="text" name="nome" required><br><br>
+
+            <label>Email:</label><br>
+            <input type="email" name="email" required><br><br>
+
+            <label>Senha:</label><br>
+            <input type="password" name="senha" required><br><br>
+
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
+</body>
+</html>
