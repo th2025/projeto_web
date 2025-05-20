@@ -23,6 +23,22 @@
         {% if erro %}
             <p class="error">{{ erro }}</p>
         {% endif %}
+
+        {% if sucesso %}
+        <div class="dialog-overlay">
+            <div class="dialog-box">
+                <div class="icon-circle">
+                    <img src="{% static 'projeto/imagens/verificado.png' %}" alt="Verificado" class="checkmark-img">
+                </div>        
+                <div class="message">Login bem-sucedido!</div>
+            </div>
+        </div>
+        <script>
+            setTimeout(function() {
+                window.location.href = '/projeto/';
+            }, 1500);
+        </script>
+    {% endif %}
     </div>
 
     <div class="register-link">

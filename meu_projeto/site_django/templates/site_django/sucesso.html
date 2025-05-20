@@ -1,13 +1,57 @@
-{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>PetSaúde | Sucesso</title>
-    <link rel="stylesheet" href="{% static 'projeto/css/sucesso.css' %}">
+  <meta charset="UTF-8">
+  <title>Sucesso</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #fff;
+    }
+
+    .caixa-sucesso {
+      background-color: #f9f9f9;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .caixa-sucesso h1 {
+      color: #e74c3c; /* vermelho */
+    }
+
+    .botao-login {
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      padding: 12px 24px;
+      background-color: #e74c3c; /* vermelho */
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .botao-login:hover {
+      background-color: #c0392b;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Usuário registrado com sucesso!</h2>
-    </div>
+
+  <div class="caixa-sucesso">
+    <h1>Usuário registrado com sucesso!</h1>
+  </div>
+
+  <a class="botao-login" href="/login/">Voltar para o Login</a>
+
 </body>
 </html>

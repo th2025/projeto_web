@@ -28,6 +28,7 @@ def sucesso(request):
 
 def login_view(request):
     erro = None
+    sucesso = False  # Novo
 
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -38,10 +39,10 @@ def login_view(request):
             try:
                 usuario = Usuario.objects.get(email=email)
                 if usuario.senha == senha:
-                    # Login bem-sucedido! Aqui você pode salvar na sessão:
                     request.session['usuario_id'] = usuario.id
                     request.session['usuario_nome'] = usuario.nome
-                    return redirect('/projeto/')
+                    sucesso = True
+                    return render(request, 'site_django/login.html', {'form': form, 'sucesso': sucesso})
                 else:
                     erro = "Senha incorreta"
             except Usuario.DoesNotExist:
