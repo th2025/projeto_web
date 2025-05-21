@@ -3,6 +3,7 @@ from .models import Usuario, Produto
 from django.contrib import messages
 from .forms import LoginForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -50,11 +51,18 @@ def login_view(request):
     else:
         form = LoginForm()
 
-    return render(request, 'site_django/login.html', {'form': form, 'erro': erro})
+    return render(request, 'site_django/index.html', {'form': form, 'erro': erro})
 
 
 from django.contrib.auth.decorators import login_required
 
 @login_required
 def projeto(request):
-    return render(request, 'site_django/index.html')  # A página principal do seu site, quando o usuário estiver logado
+    try:
+        # Busca o usuário pelo email (assumindo que seja igual no auth_user e Usuario)
+        usuario_logado = Usuario.objects.get(email=request.user.email)
+        nome = usuario_logado.nome
+    except Usuario.DoesNotExist:
+        nome = request.user.username  # fallback
+
+    return render(request, 'site_django/index.html', {'usuario_nome': nome})
