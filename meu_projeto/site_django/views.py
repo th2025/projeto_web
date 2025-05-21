@@ -43,7 +43,7 @@ def login_view(request):
                     request.session['usuario_id'] = usuario.id
                     request.session['usuario_nome'] = usuario.nome
                     sucesso = True
-                    return render(request, 'site_django/login.html', {'form': form, 'sucesso': sucesso})
+                    return render(request, 'site_django/index.html', {'form': form, 'sucesso': sucesso})
                 else:
                     erro = "Senha incorreta"
             except Usuario.DoesNotExist:
@@ -51,7 +51,7 @@ def login_view(request):
     else:
         form = LoginForm()
 
-    return render(request, 'site_django/index.html', {'form': form, 'erro': erro})
+    return render(request, 'site_django/login.html', {'form': form, 'erro': erro})
 
 
 from django.contrib.auth.decorators import login_required
