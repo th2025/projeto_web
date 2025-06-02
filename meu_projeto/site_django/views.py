@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect
 from .models import Usuario, Produto
 from django.contrib import messages
 from .forms import LoginForm
-from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -24,12 +22,14 @@ def registrar(request):
     
     return render(request, 'site_django/registrar.html')
 
+
 def sucesso(request):
     return render(request, 'site_django/sucesso.html')
 
+
 def login_view(request):
     erro = None
-    sucesso = False  # Novo
+    sucesso = False
 
     if request.method == 'POST':
         form = LoginForm(request.POST)
@@ -42,8 +42,10 @@ def login_view(request):
                 if usuario.senha == senha:
                     request.session['usuario_id'] = usuario.id
                     request.session['usuario_nome'] = usuario.nome
-                    sucesso = True
-                    return render(request, 'site_django/index.html', {'form': form, 'sucesso': sucesso})
+                    return render(request, 'site_django/login.html', {
+                        'form': form,
+                        'sucesso': True
+                    })
                 else:
                     erro = "Senha incorreta"
             except Usuario.DoesNotExist:
@@ -54,15 +56,10 @@ def login_view(request):
     return render(request, 'site_django/login.html', {'form': form, 'erro': erro})
 
 
-from django.contrib.auth.decorators import login_required
-
-@login_required
 def projeto(request):
-    try:
-        # Busca o usuário pelo email (assumindo que seja igual no auth_user e Usuario)
-        usuario_logado = Usuario.objects.get(email=request.user.email)
-        nome = usuario_logado.nome
-    except Usuario.DoesNotExist:
-        nome = request.user.username  # fallback
-
+    nome = request.session.get('usuario_nome')
     return render(request, 'site_django/index.html', {'usuario_nome': nome})
+
+def logout_view(request):
+    request.session.flush()  # limpa a sessão
+    return redirect('/login/')

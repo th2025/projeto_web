@@ -12,13 +12,14 @@
 </head>
 
 <body>
-    <!-- Exibe o nome do usuário logado -->
-    {% if user.is_authenticated %}
-    <div style="position: absolute; top: 10px; left: 10px; background-color: #f0f0f0; padding: 8px; border-radius: 5px;">
-        Logado como: <strong>{{ usuario_nome }}</strong>
+    <!-- Exibe o nome do usuário logado com base na sessão -->
+    {% if usuario_nome %}
+    <div style="position: absolute; top: 10px; left: 10px; display: flex; align-items: center; background-color: #f5f5f5; padding: 10px 15px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1);">
+        <img src="{% static 'projeto/imagens/user-icon.png' %}" alt="Usuário" style="width: 32px; height: 32px; margin-right: 10px;">
+        <span style="margin-right: 15px;">Bem-vindo, <strong>{{ usuario_nome }}</strong></span>
+        <a href="/logout/" style="text-decoration: none; color: #fff; background-color: #e74c3c; padding: 5px 10px; border-radius: 5px; font-size: 14px;">Logout</a>
     </div>
     {% endif %}
-    
 
     <nav>
         <ul>
