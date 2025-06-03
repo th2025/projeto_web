@@ -15,13 +15,20 @@ def registrar(request):
         nome = request.POST.get('nome')
         email = request.POST.get('email')
         senha = request.POST.get('senha')
-        
-        # Aqui você poderia validar ou criptografar a senha
+
+        # Verifica se o email já está cadastrado
+        if Usuario.objects.filter(email=email).exists():
+            return render(request, 'site_django/registrar.html', {
+                'erro_email': 'Email já existente',
+                'nome': nome,
+                'email': email
+            })
+
+        # Criação do usuário
         Usuario.objects.create(nome=nome, email=email, senha=senha)
         return redirect('sucesso')
-    
-    return render(request, 'site_django/registrar.html')
 
+    return render(request, 'site_django/registrar.html')
 
 def sucesso(request):
     return render(request, 'site_django/sucesso.html')

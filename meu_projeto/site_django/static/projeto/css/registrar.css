@@ -82,3 +82,37 @@ body {
 .register-link a:hover {
     color: #f39c12;
 }
+
+/* Botão Voltar */
+.voltar-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 0;
+    margin-top: 15px;
+    background-color: #e74c3c;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+.voltar-btn:hover {
+    background-color: #f39c12;
+}
+
+/* Estilo para mensagens de erro */
+.erro {
+    color: red;
+    font-size: 0.95rem;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    text-align: left;
+    padding-left: 5%;
+}
+
