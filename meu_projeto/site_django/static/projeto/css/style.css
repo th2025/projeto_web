@@ -197,3 +197,39 @@ section p {
     margin-top: 5px;
 }
 
+/* Scrollbar para navegadores Webkit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #ffffff;  /* cor do fundo da barra */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #e74c3c;  /* cor do scroll em si */
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #e74c3c;
+}
+
+/* Scrollbar para Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #e74c3c #ffffff;
+}
+
+/* Garante que o scroll vertical apareça quando necessário */
+html {
+    overflow-y: auto;
+}
+
+/* Oculta a scrollbar inicialmente */
+body::-webkit-scrollbar {
+    width: 8px;
+    background: transparent;
+}
