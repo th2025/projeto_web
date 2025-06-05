@@ -34,3 +34,14 @@ body {
     margin-bottom: 25px;
     text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
 }
+
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .container h2 {
+        font-size: 1.8rem;
+    }
+}

@@ -158,3 +158,46 @@ body {
     height: 80px;
 }
 
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        margin: 40px auto;
+        padding: 20px;
+    }
+
+    .container h2 {
+        font-size: 1.8rem;
+    }
+
+    .container input {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .container button {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    .register-link {
+        font-size: 0.95rem;
+    }
+
+    .success-message,
+    .error {
+        font-size: 0.9rem;
+    }
+
+    .dialog-box {
+        padding: 20px;
+    }
+
+    .dialog-box .message {
+        font-size: 1rem;
+    }
+
+    .checkmark-img {
+        width: 60px;
+        height: 60px;
+    }
+}
