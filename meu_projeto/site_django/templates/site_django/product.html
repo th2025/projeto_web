@@ -4,22 +4,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PetSaúde | Produtos </title>
+    <title>PetSaúde | Produtos</title>
 
-    <!-- Link para o arquivo CSS -->
     {% load static %}
     <link rel="stylesheet" href="{% static 'projeto/css/style.css' %}">
 </head>
 <body>
 
-    <!-- Navegação -->
     <nav>
         <ul>
             <li><a href="../">Página Inicial</a></li>
         </ul>
     </nav>
 
-    <!-- Cabeçalho -->
     <header>
         <div class="center">
             <img src="{% static 'projeto/imagens/petsaude.png' %}" alt="PetSaúde">
@@ -28,7 +25,6 @@
         <h2>Encontre os melhores produtos para seu pet</h2>
     </header>
 
-    <!-- Pesquisa de produtos -->
     <section class="search-section">
         <h3>Pesquisar Produtos</h3>
         <div class="search-container" onkeydown="handleKeyDown(event)">
@@ -36,13 +32,17 @@
         </div>
     </section>    
 
-    <!-- Produtos de referência -->
     <section>
         <h3>Produtos</h3>
         {% if produtos %}
             <div class="produtos-container">
                 {% for produto in produtos %}
-                <div class="produto-card">
+                <div class="produto-card"
+                    data-nome="{{ produto.nome }}"
+                    data-preco="{{ produto.preco }}"
+                    data-img="{% if produto.imagem %}{{ produto.imagem.url }}{% else %}{% static 'projeto/imagens/placeholder.png' %}{% endif %}"
+                    data-desc="{{ produto.descricao }}">
+                    
                     <div class="produto-img">
                         {% if produto.imagem %}
                             <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}">
@@ -60,23 +60,60 @@
         {% endif %}
     </section>
 
+    <!-- Modal -->
+    <div id="modal" class="modal hidden" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close" onclick="closeModal(event)">&times;</span>
+            <div class="modal-body">
+                <img id="modal-img" src="" alt="Imagem do Produto">
+                <div class="modal-text">
+                    <h2 id="modal-title"></h2>
+                    <p id="modal-price"></p>
+                    <p id="modal-desc"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script>
         function searchProduct() {
             const searchQuery = document.getElementById('productSearch').value.toLowerCase();
             const produtos = document.querySelectorAll('.produto-card');
-        
+
             produtos.forEach(produto => {
                 const nomeProduto = produto.querySelector('h4').textContent.toLowerCase();
                 produto.style.display = nomeProduto.includes(searchQuery) ? 'block' : 'none';
             });
         }
-        
+
         function handleKeyDown(event) {
             if (event.key === 'Enter') {
-                event.preventDefault();  // evita recarregar a página
+                event.preventDefault();
                 searchProduct();
             }
         }
-        </script>               
+
+        document.querySelectorAll('.produto-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const nome = card.getAttribute('data-nome');
+                const preco = parseFloat(card.getAttribute('data-preco')).toFixed(2);
+                const img = card.getAttribute('data-img');
+                const desc = card.getAttribute('data-desc');
+
+                document.getElementById('modal-title').textContent = nome;
+                document.getElementById('modal-price').textContent = `R$ ${preco}`;
+                document.getElementById('modal-img').src = img;
+                document.getElementById('modal-desc').textContent = desc;
+
+                document.getElementById('modal').classList.remove('hidden');
+            });
+        });
+
+        function closeModal(event) {
+            document.getElementById('modal').classList.add('hidden');
+        }
+    </script>
+
 </body>
 </html>
