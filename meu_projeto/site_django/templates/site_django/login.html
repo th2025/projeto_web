@@ -11,11 +11,19 @@
 
         <form method="post">
             {% csrf_token %}
+
             <label for="id_email">E-mail:</label><br>
             {{ form.email }}<br>
 
             <label for="id_senha">Senha:</label><br>
-            {{ form.senha }}<br>
+            <div class="password-container">
+                {{ form.senha }}
+                <img src="{% static 'projeto/imagens/olho.png' %}" 
+                     alt="Mostrar senha" 
+                     class="toggle-password" 
+                     onclick="toggleSenha(this)">
+            </div><br>
+            
 
             <button type="submit">Entrar</button>
         </form>
@@ -35,7 +43,7 @@
                 <div class="icon-circle">
                     <img src="{% static 'projeto/imagens/verificado.png' %}" alt="Verificado" class="checkmark-img">
                 </div>        
-                <div class="message">Login bem-sucedido!</div>
+                <div class="message" style="font-size: 30px;">Login bem-sucedido!</div>
             </div>
         </div>
         <script>
@@ -49,5 +57,25 @@
     <div class="register-link">
         <p>Não tem uma conta? <a href="/registrar">Registrar-se</a></p>
     </div>
+
+    <!-- Script para alternar visibilidade da senha -->
+    <script>
+        function toggleSenha(img) {
+            const senhaInput = document.getElementById("id_senha");
+            const mostrarSrc = "{% static 'projeto/imagens/olho.png' %}";
+            const ocultarSrc = "{% static 'projeto/imagens/olhofechado.png' %}";
+    
+            if (senhaInput.type === "password") {
+                senhaInput.type = "text";
+                img.src = ocultarSrc;
+                img.alt = "Ocultar senha";
+            } else {
+                senhaInput.type = "password";
+                img.src = mostrarSrc;
+                img.alt = "Mostrar senha";
+            }
+        }
+    </script>
+    
 </body>
 </html>

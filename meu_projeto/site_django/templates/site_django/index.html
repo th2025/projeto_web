@@ -13,21 +13,21 @@
 
 <body>
     <!-- Exibe o nome do usuário logado com base na sessão -->
-    <div style="position: absolute; top: 10px; left: 10px; display: flex; align-items: center; background-color: #f5f5f5; padding: 10px 15px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); gap: 10px;">
+    <div style="position: absolute; top: 10px; left: 10px; display: flex; align-items: center; background-color: #f5f5f5; padding: 10px 40px; border-radius:60px; box-shadow: 0 0 5px rgba(0,0,0,0.1); gap: 10px;">
         {% if usuario_nome %}
             <img src="{% static 'projeto/imagens/user-icon.png' %}" alt="Usuário" style="width: 32px; height: 32px;">
-            <span>Bem-vindo, <strong>{{ usuario_nome }}</strong></span>
-            <a href="/logout/" style="text-decoration: none; color: #fff; background-color: #e74c3c; padding: 5px 10px; border-radius: 5px; font-size: 14px;">Logout</a>
+            <span style="font-size: larger;">Bem-vindo, <strong>{{ usuario_nome }}</strong></span>
+            <a href="/logout/" style="font-weight: bold; text-decoration: none; color: #fff; background-color: #e74c3c; padding: 10px 30px; border-radius: 60px; font-size: 16px;">LOGOUT</a>
         {% else %}
-            <a href="/login/" style="text-decoration: none; color: #fff; background-color: #3498db; padding: 5px 10px; border-radius: 5px; font-size: 14px;">LOGIN</a>
-            <a href="/registrar/" style="text-decoration: none; color: #fff; background-color: #2ecc71; padding: 5px 10px; border-radius: 5px; font-size: 14px;">REGISTRAR-SE</a>
+            <a href="/login/" style="font-weight: bold; text-decoration: none; color: #fff; background-color: #e74c3c; padding: 10px 30px; border-radius: 60px; font-size: 16px;">LOGIN</a>
+            <a href="/registrar/" style="font-weight: bold; text-decoration: none; color: #fff; background-color: #e74c3c; padding: 10px 30px; border-radius: 60px; font-size: 16px;">REGISTRAR-SE</a>
         {% endif %}
     </div>
     
     <nav>
         <ul>
             <li>
-                <a href="/projeto/produtos/">Produtos</a>
+                <a href="/projeto/produtos/" style="font-weight: bold;" >Produtos</a>
             </li>
         </ul>
     </nav>

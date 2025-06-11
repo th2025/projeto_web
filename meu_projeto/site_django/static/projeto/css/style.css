@@ -385,3 +385,35 @@ body::-webkit-scrollbar {
         font-size: 1.2rem;
     }
 }
+
+nav a.ativo {
+    text-decoration: underline;
+    color: #e74c3c;
+}
+
+.banner-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.banner-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.logo-sobre-banner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.logo-sobre-banner img {
+    width: 200px;
+    height: auto;
+    z-index: 2;
+}
+
