@@ -281,11 +281,12 @@ body::-webkit-scrollbar {
 
 .modal-body {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 40px;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: nowrap;
 }
 
+/* Ajusta a imagem */
 .modal-body img {
     width: 250px;
     height: 250px;
@@ -294,19 +295,30 @@ body::-webkit-scrollbar {
     border: 2px solid #e74c3c;
 }
 
-.modal-text h2 {
-    font-size: 2.2rem;
-    margin-bottom: 12px;
-    color: #e74c3c;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+/* Texto do modal */
+.modal-text {
+    flex: 1;
 }
 
-.modal-text p {
-    font-size: 1.3rem;
-    margin: 8px 0;
-    color: #555;
-    line-height: 1.6;
+/* Botão Comprar alinhado à direita da imagem */
+.buy-button {
+    align-self: flex-start;
+    margin-left: auto; /* empurra para a direita */
+    padding: 10px 25px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    height: fit-content;
 }
+
+.buy-button:hover {
+    background-color: #27ae60;
+}
+
 
 @keyframes fadeInUp {
     from {

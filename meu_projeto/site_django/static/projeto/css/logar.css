@@ -201,3 +201,12 @@ body {
         height: 60px;
     }
 }
+
+.container .btn-guest {
+    background-color: #e74c3c;
+    margin-top: 10px;
+}
+
+.container .btn-guest:hover {
+    background-color: #e74c3c;
+}

@@ -7,8 +7,11 @@ from .forms import LoginForm
 
 def produto(request):
     produtos = Produto.objects.all()
-    return render(request, 'site_django/product.html', {'produtos': produtos})
-
+    usuario_nome = request.session.get('usuario_nome')
+    return render(request, 'site_django/product.html', {
+        'produtos': produtos,
+        'usuario_nome': usuario_nome
+    })
 
 def registrar(request):
     if request.method == 'POST':

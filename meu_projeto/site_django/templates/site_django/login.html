@@ -20,6 +20,11 @@
             <button type="submit">Entrar</button>
         </form>
 
+        <!-- Botão de acesso sem login -->
+        <form action="/projeto/" method="get">
+            <button type="submit" style="margin-top: 10px; background-color: #e74c3c;">Entrar sem login</button>
+        </form>
+
         {% if erro %}
             <p class="error">{{ erro }}</p>
         {% endif %}
@@ -36,9 +41,9 @@
         <script>
             setTimeout(function() {
                 window.location.href = '/projeto/';
-            }, 1500);  // Espera 3 segundos
+            }, 1500);
         </script>
-    {% endif %}
+        {% endif %}
     </div>
 
     <div class="register-link">
