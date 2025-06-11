@@ -74,6 +74,7 @@
 
     <!-- Modal -->
     <!-- Modal -->
+    <!-- Modal -->
     <div id="modal" class="modal hidden" onclick="closeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <span class="close" onclick="closeModal(event)">&times;</span>
@@ -83,11 +84,16 @@
                     <h2 id="modal-title"></h2>
                     <p id="modal-price"></p>
                     <p id="modal-desc"></p>
+    
+                    <div class="action-buttons">
+                        <button class="add-cart-button" onclick="addToCart()">🛒 Adicionar ao Carrinho</button>
+                        <button id="buy-button" class="buy-button" onclick="buyProduct()">💳 Comprar</button>
+                    </div>
                 </div>
-                <button id="buy-button" class="buy-button" onclick="buyProduct()">Comprar</button>
             </div>
         </div>
     </div>
+
     
     <!-- Scripts -->
     <script>
@@ -133,6 +139,9 @@
         closeModal(); // Fecha o modal após a compra
         }
 
+        function addToCart() {
+        alert("Produto adicionado ao carrinho!");
+        }
     </script>
 
 </body>
